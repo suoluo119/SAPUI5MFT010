@@ -1,0 +1,73 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "sap.ui.mmf070.wt",
+        "type": "application",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "ach": "CA-UI5-DOC"
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+             "sap_bluecrystal"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "rootView": "sap.ui.mmf070.wt.view.App",
+        "dependencies": {
+            "minUI5Version": "1.28",
+            "libs": {
+            	"sap.m": {}
+            }
+        },
+        "resources": {
+            "css": [{
+                "uri": "css/style.css"
+             }]
+        },
+        "routing":{
+            "config":{
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "sap.ui.mmf070.wt.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "transition": "slide"
+            },
+            "routes":[
+	            {
+	                "pattern": "",
+	                "name": "marequesthome",
+	                "target": "marequesthome"
+	            },
+	            {
+	                "pattern": "madetail/{VBELN}",
+	                "name": "madetail",
+	                "target": "madetail"
+	            }
+            ],
+            "targets": {
+	            "marequesthome": {
+	                "viewName": "MaRequestHome",
+	                "viewLevel": 0
+	            },
+	            "madetail": {
+	                "viewName": "MaDetail",
+	                "viewLevel": 1
+	            }
+            }
+        }
+    }
+}

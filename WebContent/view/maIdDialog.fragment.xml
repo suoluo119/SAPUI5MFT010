@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+        title="{i18n>dialogMaterialTitle}"
+        items="{/results}"
+        search="_maIdValueHelpSearch"
+        liveChange="_maIdValueHelpSearch"
+        confirm="_maIdValueHelpClose"
+        cancel="_maIdValueHelpClose">
+        <StandardListItem title="{MATNR}" description="{MAKTX}">
+        </StandardListItem>
+    </SelectDialog>
+</core:FragmentDefinition>

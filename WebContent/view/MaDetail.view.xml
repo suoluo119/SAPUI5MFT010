@@ -1,0 +1,171 @@
+<mvc:View controllerName="sap.ui.mmf070.wt.controller.MaDetail"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    width="100%">
+    <Page
+        id="page"
+        navButtonPress="onNavBack"
+        showNavButton="true"
+        title="{i18n>routTitle}">
+        <content>
+            <Table
+                id="table"
+                sort="sortDeliveryDate"
+                class="sapUiResponsiveMargin sapUiNoMarginTop"
+                growing="true"
+                growingScrollToLoad="true"
+                updateFinished="onUpdateFinished"
+                width="auto"
+                items="{
+                    path:'/results',
+                    sorter: {
+                        path: 'POSNR',
+                        descending: false}
+                }">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title id="tableHeader"/>
+                        <ToolbarSpacer/>
+                        <SearchField
+                            id="searchField"
+                            search="onTableSearch"
+                            tooltip="{i18n>search}"
+                            width="auto"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="ItemColumn">
+                        <Text text="{i18n>itemNum}"/>
+                    </Column>
+                    <Column id="MaterialNumColumn"
+                        width="21%"
+                        demandPopin="true"
+                        minScreenWidth="Tablet">
+                        <Text text="{i18n>materialNum}"/>
+                    </Column>
+                    <!-- <Column id="MaterialDescColumn"
+                        demandPopin="true"
+                        minScreenWidth="Tablet">
+                        <Text text="{i18n>materialDesc}"/>
+                    </Column> -->
+                    <Column
+                        id="IssueQtyColumn"
+                        width="8%"
+                        demandPopin="true"
+                        minScreenWidth="Tablet">
+                        <Text text="{i18n>issueQty}"/>
+                    </Column>
+                    <Column
+                        id="UnitColumn"
+                        hAlign="Center"
+                        demandPopin="true"
+                        minScreenWidth="Tablet">
+                        <Text text="{i18n>unit}"/>
+                    </Column>
+                    <Column id="CostCenterColumn"
+                        demandPopin="true"
+                        width="10%"
+                        minScreenWidth="Tablet"
+                        hAlign="Center">
+                        <Text text="{i18n>costCenter}"/>
+                    </Column>
+                    <Column id="ReasonCodeColumn"
+                        demandPopin="true"
+                        minScreenWidth="Tablet"
+                        hAlign="Center">
+                        <Text text="{i18n>reasoncode}"/>
+                    </Column>
+                    <Column id="CommentColumn"
+                        demandPopin="true"
+                        minScreenWidth="Tablet"
+                        hAlign="Center">
+                        <Text text="{i18n>comment}"/>
+                    </Column>
+                    <Column id="deliveryDateColumn"
+                        width="13%"
+                        demandPopin="true"
+                        minScreenWidth="Tablet"
+                        hAlign="Center">
+                        <Text text="{i18n>deliveryDate}"/>
+                    </Column>
+                    <Column id="totalCosColumn"
+                        width="15%"
+                        demandPopin="true"
+                        minScreenWidth="Tablet"
+                        hAlign="Right">
+                        <Text text="{i18n>totalCost}"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectNumber
+                                number="{POSNR}"
+                                hAlign="Left" />
+                            <ObjectIdentifier
+                            	title="{MATNR}"
+                                text="{MAKTX}"
+                                hAlign="Left" />
+                            <!-- <ObjectIdentifier
+                                text="{MAKTX}"
+                                hAlign="Left" /> -->
+                            <ObjectNumber
+                                number="{MENGE}"
+                                hAlign="Left" />
+                            <ObjectIdentifier
+                                text="{MEINS}"
+                                hAlign="Left" />
+                            <ObjectIdentifier
+                                text="{KOSTL}"
+                                hAlign="Left" />
+                            <ObjectIdentifier
+                                text="{GRUND}"
+                                hAlign="Left" />
+                            <ObjectIdentifier
+                                text="{ZCOMM}"
+                                hAlign="Left" />
+                            <ObjectIdentifier
+                                text="{LFDAT}"
+                                hAlign="Left" />
+                            <ObjectNumber
+								number="{
+									path: 'TOTAL',
+                                    formatter: 'sap.ui.mmf070.wt.controller.Formatter.total'
+								}"
+								unit="{WAERS}"
+								hAlign="Right"/>
+                            <!-- <ObjectIdentifier
+                                text="{TOTAL} {WAERS}"
+                                hAlign="Left" /> -->
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <footer>
+            <OverflowToolbar>
+            	<ToolbarSpacer />
+                <Button id="rejectBtid" type="Reject" text="{i18n>rejectBt}"
+                    icon="sap-icon://delete" press="onDelItems">
+                    <layoutData>
+                        <OverflowToolbarLayoutData moveToOverflow="false" />
+                    </layoutData>
+                </Button>
+            	<Button id="approveBtid" type="Accept" text="{i18n>approveBt}"
+                    icon="sap-icon://action" press="onApprove">
+                    <layoutData>
+                        <OverflowToolbarLayoutData moveToOverflow="false" />
+                    </layoutData>
+                </Button>
+                <Button id="cancelApproveBtid" text="{i18n>cancelApproveBt}"
+                    icon="sap-icon://decline" press="onCancelApro">
+                    <layoutData>
+                        <OverflowToolbarLayoutData moveToOverflow="false" />
+                    </layoutData>
+                </Button>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

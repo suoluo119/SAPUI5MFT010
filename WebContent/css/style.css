@@ -1,0 +1,13 @@
+.bold Label{
+    font-weight: bold !important;
+}
+.sapMPageHeader::before{
+	border-top: 0px !important;
+}
+.sapMShellHeader{
+	border-top: 0px !important;
+}
+.sapMShellBrandingBar{
+	background-color: transparent !important;
+	height: 0px !important;
+}

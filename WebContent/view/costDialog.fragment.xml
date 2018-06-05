@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		noDataText="{i18n>nodata}"
+		title="{i18n>dialogCostCtrTitle}"
+		items="{/results}"
+		search="_costValueHelpSearch"
+		liveChange="_costValueHelpSearch"
+		confirm="_costValueHelpClose"
+		cancel="_costValueHelpClose">
+		<StandardListItem
+			title="{KOSTL}"
+			description="{KTEXT}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

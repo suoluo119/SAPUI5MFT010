@@ -1,0 +1,216 @@
+<mvc:View controllerName="sap.ui.mmf070.wt.controller.MaRequestHome"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    width="100%">
+    <Page
+        id="page"
+        navButtonPress="onNavBack"
+        showNavButton="true"
+        title="{i18n>routTitle}">
+        <content>
+            <fb:FilterBar search="" filterBarExpanded="true"
+                showRestoreButton="false" showGoOnFB="false">
+                <fb:filterItems>
+                    <fb:FilterItem name="requestdate" mandatory="true"
+                        label="{i18n>requestDate}">
+                        <fb:control>
+                            <DatePicker id="dateRequest"
+                                placeholder="{i18n>selectDate} ..."
+                                valueFormat="yyyyMMdd"
+                                displayFormat="yyyy/MM/dd" width="100%">
+                            </DatePicker>
+                        </fb:control>
+                    </fb:FilterItem>
+                    <!-- <fb:FilterItem name="Plant" mandatory="false"
+                        visible="false" label="{i18n>plant}">
+                        <fb:control>
+                            <Input id="Plantid" enabled="false"/>
+                        </fb:control>
+                    </fb:FilterItem> -->
+                    <fb:FilterItem name="costCenter" mandatory="false"
+                        label="{i18n>costCenter}">
+                        <fb:control>
+                            <Input type="Text" id="costCenter" placeholder="Enter {i18n>costCenter} ..." showValueHelp="true"
+                                valueHelpRequest="costCenterHelpVal" liveChange="getMaterial"/>
+                        </fb:control>
+                    </fb:FilterItem>
+                    <fb:FilterItem name="maIdNumber" mandatory="false"
+                        label="{i18n>materialNum}">
+                        <fb:control>
+                            <Input type="Text" id="maIdNumber" placeholder="Enter {i18n>materialNum} ..."
+                                showValueHelp="true" valueHelpRequest="maNumberHelpVal"/>
+                        </fb:control>
+                    </fb:FilterItem>
+                    <fb:FilterItem name="requestUser"
+                        label="{i18n>requester}">
+                        <fb:control>
+                            <Input id="requestUser" placeholder="Enter {i18n>requester} ..."/>
+                        </fb:control>
+                    </fb:FilterItem>
+                </fb:filterItems>
+            </fb:FilterBar>
+            <IconTabBar
+                id="iconTabBar"
+                select="handleIconTabBarSelect"
+                expandable="false"
+                applyContentPadding="false">
+                <items>
+                    <IconTabFilter
+                        id="notProveBtId"
+                        key="0"
+                        icon="sap-icon://message-warning"
+                        iconColor="Critical"
+                        design="Horizontal"
+                        count="0"
+                        text="{i18n>notapprove}"/>
+                    <IconTabSeparator icon="sap-icon://open-command-field" />
+                    <IconTabFilter
+                        id="provedBtId"
+                        key="1"
+                        icon="sap-icon://message-success"
+                        iconColor="Positive"
+                        design="Horizontal"
+                        count="0"
+                        text="{i18n>approved}"/>
+                </items>
+            </IconTabBar>
+            <Table
+                id="table"
+                sort="sortDeliveryDate"
+                class="sapUiResponsiveMargin sapUiNoMarginTop"
+                growing="true"
+                growingScrollToLoad="true"
+                updateFinished="onUpdateFinished"
+                width="auto"
+                mode="MultiSelect"
+                enableCellFilter="true"
+                items="{
+                    path:'/results',
+                    sorter: {
+                        path: 'RDATE',
+                        descending: false}
+                }">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title id="tableHeader"/>
+                        <ToolbarSpacer/>
+                        <SearchField
+                            id="searchField"
+                            search="onTableSearch"
+                            tooltip="{i18n>search}"
+                            width="auto"/>
+                        <Button icon="sap-icon://action-settings" press="onSetTabColumns">
+                            <layoutData>
+                                <OverflowToolbarLayoutData priority="NeverOverflow" />
+                            </layoutData>
+                        </Button>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="RequestNumColumn">
+                        <Text
+                            id="requestNumTitle"
+                            text="{i18n>requestNum}"/>
+                    </Column>
+                    <Column
+                        id="requestDateColumn"
+                        demandPopin="false"
+                        minScreenWidth="Tablet">
+                        <Text text="{i18n>requestDate}"/>
+                    </Column>
+                    <Column
+                        id="requesterColumn"
+                        hAlign="Center"
+                        demandPopin="true"
+                        minScreenWidth="Tablet">
+                        <Text text="{i18n>requester}"/>
+                    </Column>
+                    <Column id="approveDateColumn"
+                        demandPopin="true"
+                        minScreenWidth="Tablet"
+                        hAlign="Center">
+                        <Text text="{i18n>approveDate}"/>
+                    </Column>
+                    <Column id="totalCostColumn"
+                        demandPopin="true"
+                        minScreenWidth="Tablet"
+                        hAlign="Right">
+                        <Text text="{i18n>totalCost}"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem press="onSelectionChange" type="Navigation">
+                        <cells>
+                            <ObjectNumber
+                                number="{VBELN}"
+                                hAlign="Left" />
+                            <ObjectIdentifier
+                                hAlign="Left"
+                                text="{RDATE}"/>
+                            <ObjectIdentifier
+                                text="{RUSER}" />
+                            <ObjectIdentifier
+                                text="{
+                                    path: 'ADATE',
+                                    formatter: 'sap.ui.mmf070.wt.controller.Formatter.valueDate'
+                                }"/>
+                            <!-- <ObjectIdentifier
+                                text="{ADATE}"/> -->
+                            <ObjectNumber
+								number="{
+									path: 'TOTAL',
+                                    formatter: 'sap.ui.mmf070.wt.controller.Formatter.total'
+								}"
+								unit="{WAERS}"
+								hAlign="Right"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+        <footer>
+            <OverflowToolbar>
+                <Button id="clearBtn" type="Reject" text="{i18n>clear}"
+                    icon="sap-icon://decline" press="onClear">
+                    <layoutData>
+                        <OverflowToolbarLayoutData moveToOverflow="false" />
+                    </layoutData>
+                </Button>
+                <Button type="Emphasized" text="{i18n>setting}"
+                    icon="sap-icon://action-settings" press="onSetting">
+                    <layoutData>
+                        <OverflowToolbarLayoutData moveToOverflow="false" />
+                    </layoutData>
+                </Button>
+                <ToolbarSpacer />
+                <Button id="rejectBtid" type="Reject" text="{i18n>rejectBt}"
+                    icon="sap-icon://delete" press="onDelItems">
+                    <layoutData>
+                        <OverflowToolbarLayoutData moveToOverflow="false" />
+                    </layoutData>
+                </Button>
+                <Button id="approveBtid" type="Accept" text="{i18n>approveBt}"
+                    icon="sap-icon://action" press="onApprove">
+                    <layoutData>
+                        <OverflowToolbarLayoutData moveToOverflow="false" />
+                    </layoutData>
+                </Button>
+                <Button id="cancelApproveBtid" text="{i18n>cancelApproveBt}"
+                    icon="sap-icon://decline" press="onCancelApro">
+                    <layoutData>
+                        <OverflowToolbarLayoutData moveToOverflow="false" />
+                    </layoutData>
+                </Button>
+                <Button id="searchBtn" type="Emphasized" text="{i18n>search}"
+                    icon="sap-icon://search" press="onSearch">
+                    <layoutData>
+                        <OverflowToolbarLayoutData moveToOverflow="false" />
+                    </layoutData>
+                </Button>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>
