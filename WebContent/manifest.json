@@ -20,7 +20,7 @@
             "phone": true
         },
         "supportedThemes": [
-             "sap_bluecrystal"
+            "sap_bluecrystal"
         ]
     },
     "sap.ui5": {
@@ -29,16 +29,16 @@
         "dependencies": {
             "minUI5Version": "1.28",
             "libs": {
-            	"sap.m": {}
+                "sap.m": {}
             }
         },
         "resources": {
             "css": [{
                 "uri": "css/style.css"
-             }]
+            }]
         },
-        "routing":{
-            "config":{
+        "routing": {
+            "config": {
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
                 "viewPath": "sap.ui.mmf070.wt.view",
@@ -46,27 +46,26 @@
                 "controlAggregation": "pages",
                 "transition": "slide"
             },
-            "routes":[
-	            {
-	                "pattern": "",
-	                "name": "marequesthome",
-	                "target": "marequesthome"
-	            },
-	            {
-	                "pattern": "madetail/{VBELN}",
-	                "name": "madetail",
-	                "target": "madetail"
-	            }
+            "routes": [{
+                    "pattern": "",
+                    "name": "marequesthome",
+                    "target": "marequesthome"
+                },
+                {
+                    "pattern": "madetail/{VBELN}",
+                    "name": "madetail",
+                    "target": "madetail"
+                }
             ],
             "targets": {
-	            "marequesthome": {
-	                "viewName": "MaRequestHome",
-	                "viewLevel": 0
-	            },
-	            "madetail": {
-	                "viewName": "MaDetail",
-	                "viewLevel": 1
-	            }
+                "marequesthome": {
+                    "viewName": "MaRequestHome",
+                    "viewLevel": 0
+                },
+                "madetail": {
+                    "viewName": "MaDetail",
+                    "viewLevel": 1
+                }
             }
         }
     }
