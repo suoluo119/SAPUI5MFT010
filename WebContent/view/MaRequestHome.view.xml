@@ -1,4 +1,4 @@
-<mvc:View controllerName="sap.ui.mmf070.wt.controller.MaRequestHome"
+<mvc:View controllerName="sap.ui.mft010.wt.controller.MaRequestHome"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:fb="sap.ui.comp.filterbar"
@@ -155,14 +155,14 @@
                             <ObjectIdentifier
                                 text="{
                                     path: 'ADATE',
-                                    formatter: 'sap.ui.mmf070.wt.controller.Formatter.valueDate'
+                                    formatter: 'sap.ui.mft010.wt.controller.Formatter.valueDate'
                                 }"/>
                             <!-- <ObjectIdentifier
                                 text="{ADATE}"/> -->
                             <ObjectNumber
 								number="{
 									path: 'TOTAL',
-                                    formatter: 'sap.ui.mmf070.wt.controller.Formatter.total'
+                                    formatter: 'sap.ui.mft010.wt.controller.Formatter.total'
 								}"
 								unit="{WAERS}"
 								hAlign="Right"/>

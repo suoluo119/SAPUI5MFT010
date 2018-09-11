@@ -2,7 +2,7 @@
     "_version": "1.1.0",
     "sap.app": {
         "_version": "1.1.0",
-        "id": "sap.ui.mmf070.wt",
+        "id": "sap.ui.mft010.wt",
         "type": "application",
         "title": "{{appTitle}}",
         "description": "{{appDescription}}",
@@ -25,7 +25,7 @@
     },
     "sap.ui5": {
         "_version": "1.1.0",
-        "rootView": "sap.ui.mmf070.wt.view.App",
+        "rootView": "sap.ui.mft010.wt.view.App",
         "dependencies": {
             "minUI5Version": "1.28",
             "libs": {
@@ -41,7 +41,7 @@
             "config": {
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
-                "viewPath": "sap.ui.mmf070.wt.view",
+                "viewPath": "sap.ui.mft010.wt.view",
                 "controlId": "app",
                 "controlAggregation": "pages",
                 "transition": "slide"

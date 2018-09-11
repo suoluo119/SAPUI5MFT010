@@ -1,5 +1,5 @@
 sap.ui.define([
-		"sap/ui/mmf070/wt/controller/BaseController",
+		"sap/ui/mft010/wt/controller/BaseController",
 		"sap/ui/core/UIComponent",
 		"sap/ui/model/json/JSONModel",
 		"sap/ui/model/Filter",
@@ -7,7 +7,7 @@ sap.ui.define([
 		"sap/m/MessageToast",
 		"sap/m/MessageBox",
 		"sap/m/TablePersoController",
-		"sap/ui/mmf070/wt/PersoService",
+		"sap/ui/mft010/wt/PersoService",
 		"sap/ui/layout/VerticalLayout",
 		"sap/ui/layout/form/SimpleForm",
 		"sap/ui/model/odata/v2/ODataModel",
@@ -44,7 +44,7 @@ sap.ui.define([
 		var settingModel;
 		//var oModel = new ODataModel("/sap/opu/odata/SAP/ZGTMMF070_SRV", true);
 		var oModel = new ODataModel("proxy/http/160.21.205.176:8001/sap/opu/odata/SAP/ZGTMMF070_SRV?sap-client=331", true);
-		return BaseController.extend('sap.ui.mmf070.wt.controller.MaRequestHome', {
+		return BaseController.extend('sap.ui.mft010.wt.controller.MaRequestHome', {
 			inputId: '',
 			onInit: function () {
 				this.fSetDate();
@@ -168,7 +168,7 @@ sap.ui.define([
 				// create value help dialog
 				if (!this._costHelpDialog) {
 					this._costHelpDialog = sap.ui.xmlfragment(
-						"sap.ui.mmf070.wt.view.costDialog",
+						"sap.ui.mft010.wt.view.costDialog",
 						this
 					);
 					this.getView().addDependent(this._costHelpDialog);
@@ -206,7 +206,7 @@ sap.ui.define([
 				// create value help dialog
 				if (!this._maNumberHelpDialog) {
 					this._maNumberHelpDialog = sap.ui.xmlfragment(
-						"sap.ui.mmf070.wt.view.maIdDialog",
+						"sap.ui.mft010.wt.view.maIdDialog",
 						this
 					);
 					this.getView().addDependent(this._maNumberHelpDialog);

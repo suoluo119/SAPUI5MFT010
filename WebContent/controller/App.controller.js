@@ -1,8 +1,8 @@
 sap.ui.define(
-	["sap/ui/mmf070/wt/controller/BaseController"],
+	["sap/ui/mft010/wt/controller/BaseController"],
 	function (BaseController) {
 		"use strict";
-		return BaseController.extend("sap.ui.mmf070.wt.controller.App", {
+		return BaseController.extend("sap.ui.mft010.wt.controller.App", {
 
 		});
 	});

@@ -1,5 +1,5 @@
 sap.ui.define([
-		"sap/ui/mmf070/wt/controller/BaseController",
+		"sap/ui/mft010/wt/controller/BaseController",
 		"sap/ui/core/routing/History",
 		"sap/ui/model/odata/v2/ODataModel",
 		"sap/ui/core/UIComponent",
@@ -27,7 +27,7 @@ sap.ui.define([
 		var bUpdate = false;
 		//var oModel = new ODataModel("/sap/opu/odata/SAP/ZGTMMF070_SRV", true);
 		var oModel = new ODataModel("proxy/http/160.21.205.176:8001/sap/opu/odata/SAP/ZGTMMF070_SRV?sap-client=331", true);
-		return BaseController.extend("sap.ui.mmf070.wt.controller.MaDetail", {
+		return BaseController.extend("sap.ui.mft010.wt.controller.MaDetail", {
 			/**
 			 * APP Opened Initialization at First Time
 			 * Then into Router

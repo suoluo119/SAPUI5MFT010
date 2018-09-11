@@ -4,7 +4,7 @@ sap.ui.define(
 	],
 	function (Controller) {
 		"use strict";
-		return Controller.extend("sap.ui.mmf070.wt.controller.BaseController", {
+		return Controller.extend("sap.ui.mft010.wt.controller.BaseController", {
 			getRouter: function () {
 				return sap.ui.core.UIComponent.getRouterFor(this);
 			},

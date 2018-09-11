@@ -5,7 +5,7 @@ sap.ui.define(
 	],
 	function (UIComponent, ResourceModel) {
 		"use strict";
-		return UIComponent.extend("sap.ui.mmf070.wt.Component", {
+		return UIComponent.extend("sap.ui.mft010.wt.Component", {
 			// manifest set
 			metadata: {
 				manifest: "json",
@@ -17,7 +17,7 @@ sap.ui.define(
 				this.getRouter().initialize();
 				// initial i18n
 				this.setModel(new ResourceModel({
-					bundleName: "sap.ui.mmf070.wt.i18n.i18n"
+					bundleName: "sap.ui.mft010.wt.i18n.i18n"
 				}), "i18n");
 			},
 		});
